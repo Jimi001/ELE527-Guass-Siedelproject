@@ -22,10 +22,10 @@ def program():
         time.sleep(1)
         coefficient_matrix = user_inputs.get_matrix()
         # Sample Output: Coefficient matrix A = [[1, 9, -2], [2, -1, 8], [6, 1, 1]]
-        print(f"Coefficient matrix is {coefficient_matrix}")
-        if not coefficient_matrix:
+        if coefficient_matrix == [] or len(coefficient_matrix) != 3:
             time.sleep(2)
             continue
+        print(f"Coefficient matrix is {coefficient_matrix}")
         try:
             rhs_vector = user_inputs.get_rhs_vector()
             if len(coefficient_matrix) != len(rhs_vector):
