@@ -1,4 +1,4 @@
-from roundToSignificantFigures import round_to_significant_figures
+from round_to_significant_figures import round_to_significant_figures
 
 
 class GaussSeidelSolver:
