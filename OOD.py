@@ -1,4 +1,4 @@
-from guass_seidel_solver import GaussSeidelSolver
+from gauss_seidel_solver import GaussSeidelSolver
 from get_input import GetInput
 from art import logo
 import time
