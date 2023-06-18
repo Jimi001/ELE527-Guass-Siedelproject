@@ -1,4 +1,4 @@
-from guassSeidelSolver import GaussSeidelSolver
+from round_to_significant_figures import round_to_significant_figures
 from art import logo
 import time
 
@@ -6,23 +6,52 @@ import time
 
 NUM_OF_ITERATION = 10
 
-print("---------------Object Oriented Design------------------")
+print("----------Procedure Oriented Design--------")
+
+
+def gauss_seidel(matrix, rhs, guess, num_of_iteration):
+    """
+    :param matrix: Coefficient matrix
+    :param rhs: Right-hand side vector
+    :param guess: Initial guess
+    :param num_of_iteration: Number of iteration
+    :return: the final solution vector
+    """
+
+    no_of_rows = len(matrix)  # number of rows in coefficient matrix
+    x = guess.copy()  # a copy of the initial guess
+
+    for step in range(NUM_OF_ITERATION):
+        for i in range(no_of_rows):
+            # calculates the sum of the products of the coefficients (A[i][j])
+            # and the corresponding variables (x[j])
+            # for all terms except the diagonal term (A[i][i]).
+            # This is represented by the variable s.
+            s = sum(matrix[i][j] * x[j] for j in range(no_of_rows) if j != i)
+            # The method then updates the i-th element of the x vector by dividing
+            # the difference between the right-hand side value (b[i]) and
+            # the sum s by the diagonal coefficient (A[i][i]).
+            # The result is assigned to x[i].
+            x[i] = round_to_significant_figures((rhs[i] - s) / matrix[i][i], 6)
+
+    return x  # returns the final solution vector x.
 
 
 def program():
     while True:
         print(logo)  # prints an ASCII generated logo
-        choice = input("Do you want to use the Guass-Siedel Program: type 'y' or 'n': ").lower()
+        choice = input("Do you want to use the Gauss-Seidel Program: type 'y' or 'n': ").lower()
         if choice == 'n':
             break
-        print("-----------GUASS SIEDEL ITERATION------------")
-        time.sleep(1)
+
+        print("-----------GAUSS SEIDEL ITERATION------------")
+
         # Accept the coefficient matrix A from the user and turning it into a list
         coefficient_matrix = []
-        for i in range(3):
+        for num in range(3):
             try:
                 # Using the split function on each row to convert to a list
-                row = input(f"Enter row {i + 1} of coefficient matrix A: (use whitespace) \n").split()
+                row = input(f"Enter row {num + 1} of coefficient matrix A: (use whitespace) \n").split()
                 # converting each item in coefficient matrix A to a float type
                 row = list(map(float, row))
             except ValueError as err_message:
@@ -37,8 +66,6 @@ def program():
                 # using the append function to append each row of the coefficient matrix to list A
                 coefficient_matrix.append(row)
         # Sample Output: Coefficient matrix A = [[1, 9, -2], [2, -1, 8], [6, 1, 1]]
-        if not coefficient_matrix:
-            continue
         print(f"Coefficient matrix is {coefficient_matrix}")
         if not coefficient_matrix:
             time.sleep(2)
@@ -67,16 +94,15 @@ def program():
             print("HI! you didn't enter an integer or float number")
             print(f"Computer says it {err_message}")
             continue
-
-        # Create an instance of GaussSeidelSolver
-        solver = GaussSeidelSolver(coefficient_matrix, rhs_vector, initial_guess, NUM_OF_ITERATION)
         # Solve the system of equations
-        solution = solver.solve()
+        solution = gauss_seidel(coefficient_matrix, rhs_vector, initial_guess, NUM_OF_ITERATION)
 
+        # clear()
         # Print the solution rounded to 6 significant digits
         print("Solution:")
-        for i, value in enumerate(solution):
-            print(f"x{i + 1} = {value:.6g}")
+        for num, value in enumerate(solution):
+            print(f"x{num + 1} = {value:.6g}")
+            time.sleep(2)
 
 
 program()
