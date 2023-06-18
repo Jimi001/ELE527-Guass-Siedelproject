@@ -3,7 +3,7 @@ from get_input import GetInput
 from art import logo
 import time
 
-# from replit import clear
+from replit import clear
 
 NUM_OF_ITERATION = 10
 
@@ -35,7 +35,7 @@ def program():
             initial_guess = user_inputs.get_initial_guess()
             # NUM_OF_ITERATION = int(input("Enter the number of iteration steps: "))
         except ValueError as err_message:
-            # clear()
+            clear()
             print("HI! you didn't enter an integer or float number")
             print(f"Computer says it {err_message}")
             continue
