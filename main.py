@@ -6,7 +6,7 @@ from replit import clear
 
 NUM_OF_ITERATION = 10
 
-print("----------Procedure Programming Design--------")
+print("----------Procedure Oriented Design--------")
 
 
 def gauss_seidel(matrix, rhs, guess, num_of_iteration):
