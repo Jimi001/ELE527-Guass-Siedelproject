@@ -31,28 +31,42 @@ def program():
                 print(f"Computer says it {err_message}")
                 break
             else:
+                if len(row) != 3:
+                    time.sleep(1)
+                    continue
                 # using the append function to append each row of the coefficient matrix to list A
                 coefficient_matrix.append(row)
         # Sample Output: Coefficient matrix A = [[1, 9, -2], [2, -1, 8], [6, 1, 1]]
         if not coefficient_matrix:
             continue
         print(f"Coefficient matrix is {coefficient_matrix}")
-
-        # Accept the right-hand side vector b from the user
-        rhs_vector = input("Enter the right-hand side vector b: (use whitespace) \n").split()
-        # converting each item in list rhs to a float type
-        rhs_vector = list(map(float, rhs_vector))  # Output: [36, 121, 107]
-        if not rhs_vector:
+        if not coefficient_matrix:
+            time.sleep(2)
             continue
 
-        # Accept the initial guess x0 from the user
-        initial_guess = input("Enter the initial guess x0: (use whitespace) \n").split()
-        if not initial_guess:
-            initial_guess = [0, 0, 0]
-        # converting each item of the initial guess to a float type
-        initial_guess = list(map(float, initial_guess))  # Initial guess x0 = [0, 0, 0]
+        try:
+            # Accept the right-hand side vector b from the user
+            rhs_vector = input("Enter the right-hand side vector b: (use whitespace) \n").split()
+            # converting each item in list rhs to a float type
+            rhs_vector = list(map(float, rhs_vector))  # Output: [36, 121, 107]
+            if len(coefficient_matrix) != len(rhs_vector):
+                print(f"length of the coefficient matrix is not equal to the length of the right-hand side vector")
+                time.sleep(2)
+                continue
 
-        # NUM_OF_ITERATION = int(input("Enter the number of iteration steps: "))
+            # Accept the initial guess x0 from the user
+            initial_guess = input("Enter the initial guess x0: (use whitespace) \n").split()
+            if len(initial_guess) != 3:
+                initial_guess = [0, 0, 0]
+            # converting each item of the initial guess to a float type
+            initial_guess = list(map(float, initial_guess))  # Initial guess x0 = [0, 0, 0]
+
+            # NUM_OF_ITERATION = int(input("Enter the number of iteration steps: "))
+        except ValueError as err_message:
+            # clear()
+            print("HI! you didn't enter an integer or float number")
+            print(f"Computer says it {err_message}")
+            continue
 
         # Create an instance of GaussSeidelSolver
         solver = GaussSeidelSolver(coefficient_matrix, rhs_vector, initial_guess, NUM_OF_ITERATION)
