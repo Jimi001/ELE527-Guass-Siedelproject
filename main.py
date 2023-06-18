@@ -66,10 +66,10 @@ def program():
                 # using the append function to append each row of the coefficient matrix to list A
                 coefficient_matrix.append(row)
         # Sample Output: Coefficient matrix A = [[1, 9, -2], [2, -1, 8], [6, 1, 1]]
-        print(f"Coefficient matrix is {coefficient_matrix}")
-        if not coefficient_matrix:
+        if coefficient_matrix == [] or len(coefficient_matrix) != 3:
             time.sleep(2)
             continue
+        print(f"Coefficient matrix is {coefficient_matrix}")
 
         try:
             # Accept the right-hand side vector b from the user
