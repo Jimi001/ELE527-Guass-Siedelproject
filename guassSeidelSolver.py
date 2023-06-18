@@ -1,3 +1,6 @@
+from roundToSignificantFigures import round_to_significant_figures
+
+
 class GaussSeidelSolver:
     def __init__(self, matrix, rhs, guess, num_of_iteration):
         self.matrix = matrix
