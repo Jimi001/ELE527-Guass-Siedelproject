@@ -1,4 +1,4 @@
-from roundToSignificantFigures import round_to_significant_figures
+from round_to_significant_figures import round_to_significant_figures
 from art import logo
 import time
 
@@ -40,11 +40,11 @@ def gauss_seidel(matrix, rhs, guess, num_of_iteration):
 def program():
     while True:
         print(logo)  # prints an ASCII generated logo
-        choice = input("Do you want to use the Guass-Siedel Program: type 'y' or 'n': ").lower()
+        choice = input("Do you want to use the Gauss-Seidel Program: type 'y' or 'n': ").lower()
         if choice == 'n':
             break
 
-        print("-----------GUASS SIEDEL ITERATION------------")
+        print("-----------GAUSS SEIDEL ITERATION------------")
 
         # Accept the coefficient matrix A from the user and turning it into a list
         coefficient_matrix = []
