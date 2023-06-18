@@ -55,7 +55,7 @@ def program():
                 # converting each item in coefficient matrix A to a float type
                 row = list(map(float, row))
             except ValueError as err_message:
-                # clear()
+                clear()
                 print("HI! you didn't enter an integer or float number")
                 print(f"Computer says it {err_message}")
                 break
