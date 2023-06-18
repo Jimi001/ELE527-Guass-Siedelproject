@@ -2,7 +2,7 @@ from round_to_significant_figures import round_to_significant_figures
 from art import logo
 import time
 
-# from replit import clear
+from replit import clear
 
 NUM_OF_ITERATION = 10
 
@@ -55,7 +55,7 @@ def program():
                 # converting each item in coefficient matrix A to a float type
                 row = list(map(float, row))
             except ValueError as err_message:
-                # clear()
+                clear()
                 print("HI! you didn't enter an integer or float number")
                 print(f"Computer says it {err_message}")
                 break
@@ -90,14 +90,14 @@ def program():
 
             # NUM_OF_ITERATION = int(input("Enter the number of iteration steps: "))
         except ValueError as err_message:
-            # clear()
+            clear()
             print("HI! you didn't enter an integer or float number")
             print(f"Computer says it {err_message}")
             continue
         # Solve the system of equations
         solution = gauss_seidel(coefficient_matrix, rhs_vector, initial_guess, NUM_OF_ITERATION)
 
-        # clear()
+        clear()
         # Print the solution rounded to 6 significant digits
         print("Solution:")
         for num, value in enumerate(solution):
