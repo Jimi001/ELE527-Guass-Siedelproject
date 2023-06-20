@@ -24,7 +24,9 @@ class GetInput:
             else:
                 if len(row) != 3:
                     time.sleep(1)
-                    continue
+                    clear()
+                    coefficient_matrix = []
+                    break
                 # using the append function to append each row of the coefficient matrix to list A
                 self.coefficient_matrix.append(row)
         return self.coefficient_matrix
