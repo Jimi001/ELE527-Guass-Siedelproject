@@ -25,7 +25,9 @@ def program():
         print(f"Coefficient matrix is {coefficient_matrix}")
         if not coefficient_matrix:
             time.sleep(2)
-            continue
+            clear()
+            coefficient_matrix = []
+      break
         try:
             rhs_vector = user_inputs.get_rhs_vector()
             if len(coefficient_matrix) != len(rhs_vector):
