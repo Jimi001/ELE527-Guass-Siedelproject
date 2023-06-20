@@ -61,8 +61,10 @@ def program():
                 break
             else:
                 if len(row) != 3:
-                    time.sleep(1)
-                    continue
+                time.sleep(1)
+                    clear()
+                    coefficient_matrix = []
+                    break
                 # using the append function to append each row of the coefficient matrix to list A
                 coefficient_matrix.append(row)
         # Sample Output: Coefficient matrix A = [[1, 9, -2], [2, -1, 8], [6, 1, 1]]
