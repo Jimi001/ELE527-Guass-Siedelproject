@@ -61,7 +61,7 @@ def program():
                 break
             else:
                 if len(row) != 3:
-                time.sleep(1)
+                    time.sleep(1)
                     clear()
                     coefficient_matrix = []
                     break
